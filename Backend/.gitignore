@@ -1,2 +1,3 @@
 resumebuddyenv
 app/__pycache__
+.env
