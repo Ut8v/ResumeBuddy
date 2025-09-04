@@ -5,8 +5,22 @@ from io import BytesIO
 import magic
 from docx import Document
 from pdfminer.high_level import extract_text as pdf_extract_text
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Only allow these types
 ALLOWED: set[Literal[
