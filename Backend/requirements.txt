@@ -1,3 +1,7 @@
 fastapi
 pydantic 
 uvicorn
+pdfminer.six
+python-docx
+python-magic # dont forget to import python-magic-bin for windows 
+python-multipart
