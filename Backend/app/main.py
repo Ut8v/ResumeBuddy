@@ -6,6 +6,7 @@ import magic
 from docx import Document
 from pdfminer.high_level import extract_text as pdf_extract_text
 from fastapi.middleware.cors import CORSMiddleware
+from app.LLM.llm import call_agent
 
 app = FastAPI()
 
@@ -62,7 +63,7 @@ def getCheck():
 
 
 @app.post('/contents')
-async def postContents(file: UploadFile = File(...)):
+async def postContents(job_description: str, file: UploadFile = File(...)):
 
     if not file or not file.filename:
         raise HTTPException(
@@ -94,9 +95,13 @@ async def postContents(file: UploadFile = File(...)):
             status_code=500, detail=f"Failed to extract text: {str(e)}")
 
     preview = text[:2000]
+
+    summery = call_agent(text, job_description)
+
     return JSONResponse({
         "filename": file.filename,
         "characters": len(text),
         "content": preview,
-        "truncated": len(text) > len(preview)
+        "truncated": len(text) > len(preview),
+        "summery": summery
     })
