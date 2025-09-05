@@ -7,6 +7,9 @@ class Settings(BaseSettings):
     MAX_OPENAI_TOKENS: int = 800
     MAX_FILE_MB: int = 3
 
+    PROMPT_SYSTEM: str
+    PROMPT_ATS_USER_TEMPLATE: str
+
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 
