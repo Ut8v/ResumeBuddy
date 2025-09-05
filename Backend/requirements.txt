@@ -3,8 +3,10 @@ pydantic
 uvicorn
 pdfminer.six
 python-docx
-python-magic # dont forget to import python-magic-bin for windows 
+python-magic
+#python-magic-bin
 python-multipart
 python-dotenv
 openai
 pydantic-settings
+pytest
