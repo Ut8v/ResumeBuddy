@@ -26,7 +26,6 @@ async def postContents(job_description: str = Form(...), file: UploadFile = File
             status_code=413, detail="File is too big to process")
 
     processed_file = detect_type(raw_file)
-    print('processed file: ', processed_file)
 
     if processed_file not in ALLOWED:
         raise HTTPException(
@@ -43,12 +42,12 @@ async def postContents(job_description: str = Form(...), file: UploadFile = File
 
     preview = text[:2000]
 
-    summery = call_agent(text, job_description)
+    summary = call_agent(text, job_description)
 
     return JSONResponse({
         "filename": file.filename,
         "characters": len(text),
         "content": preview,
         "truncated": len(text) > len(preview),
-        "summery": summery
+        "summary": summary
     })

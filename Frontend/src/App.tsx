@@ -31,7 +31,7 @@ const App: React.FC = () => {
       form.append("file", file);
       form.append("job_description", jobDescription);
       const data = await ContentService.sendContent(form);  
-      setResponseText(data.summery ?? "");      
+      setResponseText(data.summary ?? "");      
     } catch (err: unknown) {
       if (err instanceof Error) setErrorMsg(err.message);
       else setErrorMsg("Something went wrong.");

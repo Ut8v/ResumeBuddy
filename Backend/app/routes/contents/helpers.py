@@ -27,7 +27,6 @@ def detect_type(buffer: bytes) -> str:
 
 
 def extract_text_from_file(filename: str, data: bytes) -> str:
-    print(filename)
     if filename == "application/pdf":
         return pdf_extract_text(BytesIO(data)) or ""
     elif filename == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":

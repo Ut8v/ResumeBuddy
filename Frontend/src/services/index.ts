@@ -9,7 +9,7 @@ export class ContentService {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log(`response`, response.data);
+
     return response.data;
   }
 }
