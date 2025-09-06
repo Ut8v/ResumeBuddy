@@ -10,7 +10,7 @@ contentsRouter = APIRouter(
 
 
 @contentsRouter.post('/contents')
-async def postContents(job_description: str = Form(...), file: UploadFile = File(...)):
+async def post_contents(job_description: str = Form(...), file: UploadFile = File(...)):
 
     if not file or not file.filename:
         raise HTTPException(
