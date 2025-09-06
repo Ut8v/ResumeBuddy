@@ -10,6 +10,8 @@ class Settings(BaseSettings):
     PROMPT_SYSTEM: str
     PROMPT_ATS_USER_TEMPLATE: str
 
+    ALLOWED_ORIGINS: str
+
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 
